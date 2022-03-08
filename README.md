@@ -8,6 +8,7 @@ The libraries used in this project are, or simply when cloning using npm i.
 
 1. react-router-dom@6
 2. axios
+3. react-lodash
 
 ## Used tools
 

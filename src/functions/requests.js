@@ -6,4 +6,12 @@ const getAllPeople = async (state) =>{
   state(request.data.results);
 }
 
-export {getAllPeople}
+const getSpecificPeople = async (id, state) =>{
+  const request = await axios.get(`https://swapi.dev/api/people/${id}`);
+  state(request.data);
+}
+
+export {
+  getAllPeople,
+  getSpecificPeople
+}

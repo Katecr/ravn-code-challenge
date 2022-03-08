@@ -8,13 +8,13 @@ import Home from './components/Home';
 
 function App() {
   return (
-    <div className="container">
+    <div className="container-fluid">
     <BrowserRouter>
         <Routes>
           <Route path="/" exact={true} element={<Home></Home>} >
 
           </Route>
-          <Route path="/person/:id" exact={true} element={<Characters></Characters>}>
+          <Route path="/people/:id" exact={true} element={<Characters></Characters>}>
 
           </Route>  
       </Routes>  
