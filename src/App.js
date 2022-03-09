@@ -8,7 +8,7 @@ import Home from './components/Home';
 
 function App() {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid no_padding">
     <BrowserRouter>
         <Routes>
           <Route path="/" exact={true} element={<Home></Home>} >
