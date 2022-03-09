@@ -7,12 +7,12 @@ import { getAllPeople, getSpecificPeople, getSpecie } from '../functions/request
 const Home = () => {
   const [peoples, setPeoples] = useState(null);
   const [species, setSpecies] = useState(null);
-  const [idPeople, setIdPeople] = useState(null);
+  const [idPeople, setIdPeople] = useState(1);
   const [detailPeople, setDetailPeople] = useState(null);
 
   useEffect(() => {
     getAllPeople(setPeoples);
-    getSpecie(2, setSpecies);    
+    getSpecie(idPeople, setSpecies);    
   }, [])
 
   return (
@@ -21,7 +21,7 @@ const Home = () => {
       <h1>Ravn Star Wars Registry</h1>
     </header>
     <div className="row">
-      <aside className="col-md-3 col-xs-12 col-sm-4 no_padding">      
+      <aside className="col-md-3 col-xs-12 col-sm-6 no_padding">      
           {peoples != null ? (
             peoples.map((people, index) => (   
               <div className="accordion" id="accordionPeople" key={index}>           
@@ -35,7 +35,7 @@ const Home = () => {
                         <FontAwesomeIcon icon={faChevronRight} />
                       </button>
                   </div>                
-                  <div id={'p'+people.height} className="collapse collapse_item" aria-labelledby="headingOne" data-parent="#accordionPeople">
+                  <div id={'p'+people.height} className="collapse collapse_item content_people_movil" aria-labelledby="headingOne" data-parent="#accordionPeople">
                     <h3>General Information</h3>
                     <div className="card-body">
                       <div className="item_info_card">
@@ -56,7 +56,7 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div id={'p'+people.height} className="collapse collapse_item" aria-labelledby="headingOne" data-parent="#accordionPeople">
+                  <div id={'p'+people.height} className="collapse collapse_item content_people_movil" aria-labelledby="headingOne" data-parent="#accordionPeople">
                     <h3>Vehicles</h3>
                     <div className="card-body">
                       <div className="item_info_card">
@@ -72,7 +72,7 @@ const Home = () => {
             ))
           ) : ('There are no people')}      
       </aside>
-      <div className="col-md-9 col-xs-12 col-sm-8 no_padding">
+      <div className="col-md-9 col-xs-12 col-sm-6 no_padding content_people_pc">
           {detailPeople != null ? (
               <div className="collapse_item content_general_info">
                 <h3>General Information</h3>

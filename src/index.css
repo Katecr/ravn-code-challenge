@@ -112,6 +112,9 @@ p {
 /* end aside */
 
 /* body */
+.content_people_pc {
+  display: none;
+}
 /* end body */
 
 @media (min-width: 768px) {
@@ -119,15 +122,28 @@ p {
   .header_dark {
     padding: 20px;
   }
+  .card-header {
+    padding: 36px 10px 16px 25px;
+  }
+  .btn {
+    padding: 0;
+  }
+  .content_people_pc {
+    display: block;
+  }
+  .content_people_movil {
+    display: none;
+  }
+  .content_general_info {
+    margin: 10px;
+    padding: 10px 40px;
+  }
   /* fin header */
 }
 @media (min-width: 1200px) {
   /* header */
-  .card-header {
-    padding: 36px 10px 16px 25px;
-  }
+
   .content_general_info {
-    margin: 10px;
     padding: 10px 100px;
   }
   /* fin header */
