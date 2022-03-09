@@ -11,8 +11,11 @@ export const getSpecificPeople = async (id, state) =>{
   state(request.data);
 }
 
-export const getSpecie = async (id,state) =>{
-  const request = await axios.get(`https://swapi.dev/api/species/${id}`);
-  state(request.data);
+export const getSpecie = async (state) =>{
+  const request = await axios.get(`https://swapi.dev/api/species/`);
+  state(request.data.results);
 }
 
+export const getVehicles = async (id,state) =>{
+  
+}
