@@ -109,11 +109,22 @@ p {
   letter-spacing: 0.0125em;
   font-style: normal;
 }
+.content_spinner{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
 /* end aside */
 
 /* body */
 .content_people_pc {
   display: none;
+}
+
+.text-alert{
+  text-align: center;
+  margin: 10px;
+  color: #EC5757;
 }
 /* end body */
 

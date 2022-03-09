@@ -2,7 +2,6 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 // Importing components
-import Characters from './components/Characters';
 import Home from './components/Home';
 
 
@@ -12,11 +11,7 @@ function App() {
     <BrowserRouter>
         <Routes>
           <Route path="/" exact={true} element={<Home></Home>} >
-
-          </Route>
-          <Route path="/people/:id" exact={true} element={<Characters></Characters>}>
-
-          </Route>  
+          </Route> 
       </Routes>  
     </BrowserRouter>                  
     </div>
