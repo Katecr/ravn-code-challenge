@@ -8,13 +8,13 @@ The libraries used in this project are, or simply when cloning using npm i.
 
 1. react-router-dom@6
 2. axios
-3. react-lodash
+3. fortawesome
 
-## Used tools
 
 ## Preview
 
-This is a preview of the simple app functionality
+The application is made with react, axios, bootstrap, jsx, css. It is responsive with the Mobile first practice, its data is consumed by The Star Wars API.
+
 
 ### Notes
 
