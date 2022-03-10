@@ -33,7 +33,7 @@ function InfoPeople(props) {
                     <p>{props.detailPeople.birth_year}</p>
                   </div>
                 </div>
-                {props.detailPeople.vehicles != null ? (
+                {props.detailPeople.vehicles != '' ? (
                   <div className="collapse_item" >
                   <h3>Vehicles</h3>
                   <div className="card-body">
@@ -41,17 +41,18 @@ function InfoPeople(props) {
                       <div className="item_info_card" key={index}>
                         {
                           vehicles != null ? (
-                            vehicles.filter(item => item.url == vehicle)
-                            .map((item,i) => (
-                              <h5 key={i}>{item.name}</h5>
+                            vehicles.filter( function(e){
+                              return e.url === vehicle
+                            }).map((ele, i) => (
+                              <h5 key={i}>{ele.name}</h5>
                             ))
-                          ) : ('loading...')                          
+                            ) : ('')                      
                         }
                       </div>
                     ))}
                   </div>
                 </div>
-                ) : (<h5 className="text-alert">No vehicles</h5>)}                
+                ) : (<h5 className="text-alert">The people has no vehicles</h5>)}                
               </div>
               
           ) : (<h5 className="text-alert">No character selected</h5>)}    

@@ -12,7 +12,7 @@ import InfoPeople from './InfoPeople';
 export default function People(props) {
    const [detailPeople, setDetailPeople] = useState(null);  
    const [species, setSpecies] = useState(null);
-   const [idPeople, setIdPeople] = useState(null);
+   const [idPeople, setIdPeople] = useState(1);
 
   useEffect(() => {
     getSpecificPeople(idPeople,setDetailPeople);
