@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 // Import own components and api functions
-import { getSpecificPeople, getSpecie } from '../functions/requests';
+import { getSpecificPeople, getSpecie, getAllVehicles } from '../functions/requests';
 import Loading from './Loading';
 import InfoPeople from './InfoPeople';
 
@@ -13,10 +13,12 @@ export default function People(props) {
    const [detailPeople, setDetailPeople] = useState(null);  
    const [species, setSpecies] = useState(null);
    const [idPeople, setIdPeople] = useState(1);
+   const [vehicles, setVehicles] = useState(null);
 
   useEffect(() => {
     getSpecificPeople(idPeople,setDetailPeople);
     getSpecie(setSpecies);
+    getAllVehicles(setVehicles);
   }, [idPeople])
 
   return (
@@ -60,17 +62,26 @@ export default function People(props) {
                       </div>
                     </div>
                   </div>
-                  <div id={'p'+people.height} className="collapse collapse_item content_people_movil" aria-labelledby="headingOne" data-parent="#accordionPeople">
+                  {people.vehicles != '' ? (
+                    <div id={'p'+people.height} className="collapse collapse_item content_people_movil" aria-labelledby="headingOne" data-parent="#accordionPeople">
                     <h3>Vehicles</h3>
                     <div className="card-body">
-                      <div className="item_info_card">
-                        <h5>Snowspeeder</h5>
+                    {people.vehicles.map((vehicle, index) => (
+                      <div className="item_info_card" key={index}>
+                        {
+                          vehicles != null ? (
+                            vehicles.filter( function(e){
+                              return e.url === vehicle
+                            }).map((ele, i) => (
+                              <h5 key={i}>{ele.name}</h5>
+                            ))
+                            ) : ('')                      
+                        }
                       </div>
-                      <div className="item_info_card">
-                        <h5>Imperial Speeder Bike</h5>
-                      </div>
+                    ))}
                     </div>
                   </div>
+                  ) : ('')}
                 </div>
               </div>
             ))
