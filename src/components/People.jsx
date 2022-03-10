@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react'
+
+// Import icons for the list
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
+// Import own components and api functions
 import { getSpecificPeople, getSpecie } from '../functions/requests';
 import Loading from './Loading';
 import InfoPeople from './InfoPeople';
@@ -9,12 +12,11 @@ import InfoPeople from './InfoPeople';
 export default function People(props) {
    const [detailPeople, setDetailPeople] = useState(null);  
    const [species, setSpecies] = useState(null);
-   const [idPeople, setIdPeople] = useState(1);
+   const [idPeople, setIdPeople] = useState(null);
 
   useEffect(() => {
     getSpecificPeople(idPeople,setDetailPeople);
-    getSpecie(setSpecies); 
-    console.log(species);
+    getSpecie(setSpecies);
   }, [idPeople])
 
   return (
@@ -79,7 +81,7 @@ export default function People(props) {
             </div>         
           )}      
       </aside>
-      <InfoPeople detailPeople = {detailPeople}/>
+      <InfoPeople detailPeople = {detailPeople} idPeople={idPeople}/>
     </>
     
   )

@@ -16,6 +16,7 @@ export const getSpecie = async (state) =>{
   state(request.data.results);
 }
 
-export const getVehicles = async (id,state) =>{
-  
+export const getAllVehicles = async (state) =>{  
+  const request = await axios.get('https://swapi.dev/api/vehicles/');
+  state(request.data.results);
 }

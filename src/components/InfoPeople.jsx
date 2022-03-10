@@ -1,13 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
-function InfoPeople(props) {
+import { getAllVehicles } from '../functions/requests';
 
+function InfoPeople(props) {  
   
-  
-  const [vehicles, setVehicles] = useState([]);
+  const [vehicles, setVehicles] = useState(null);
+
+  useEffect(() => {
+    getAllVehicles(setVehicles);
+  }, [])
 
   return (
-    <div className="col-md-9 col-xs-12 col-sm-6 no_padding content_people_pc">
+    <div className="col-md-9 col-xs-12 col-sm-6 no_padding content_people_pc"  key={props.idPeople}>
           {props.detailPeople != null ? (
               <div className="collapse_item content_general_info">
                 <h3>General Information</h3>
@@ -29,17 +33,25 @@ function InfoPeople(props) {
                     <p>{props.detailPeople.birth_year}</p>
                   </div>
                 </div>
-                <div className="collapse_item" >
+                {props.detailPeople.vehicles != null ? (
+                  <div className="collapse_item" >
                   <h3>Vehicles</h3>
                   <div className="card-body">
-                    <div className="item_info_card">
-                      <h5>Snowspeeder</h5>
-                    </div>
-                    <div className="item_info_card">
-                      <h5>Imperial Speeder Bike</h5>
-                    </div>
+                    {props.detailPeople.vehicles.map((vehicle, index) => (
+                      <div className="item_info_card" key={index}>
+                        {
+                          vehicles != null ? (
+                            vehicles.filter(item => item.url == vehicle)
+                            .map((item,i) => (
+                              <h5 key={i}>{item.name}</h5>
+                            ))
+                          ) : ('loading...')                          
+                        }
+                      </div>
+                    ))}
                   </div>
                 </div>
+                ) : (<h5 className="text-alert">No vehicles</h5>)}                
               </div>
               
           ) : (<h5 className="text-alert">No character selected</h5>)}    
